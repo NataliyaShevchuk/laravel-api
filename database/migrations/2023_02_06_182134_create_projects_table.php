@@ -20,6 +20,11 @@ return new class extends Migration
             $table->text('cover_img')->nullable();
             $table->string('github_link')->nullable();
 
+            $table->unsignedBigInteger("type_id")->nullable();
+            $table->foreign("type_id")
+                ->references("id")
+                ->on("types");
+
             $table->timestamps();
         });
     }
