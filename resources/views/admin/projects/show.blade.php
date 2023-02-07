@@ -16,6 +16,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{$project->name}}</h5>
                             <p class="card-text">{{$project->description}}</p>
+                            <p class="card-text">{{ $project->type ? $project->type->name : '' }}</p>
                             <a href="{{$project->github_link}}" class="btn btn-primary">Github Link</a>
                             <button class="btn btn-info"> <a href="{{route('admin.projects.edit', $project->id)}}" class="text-decoration-none">Modifica</a></button>
                             {{-- <button class="btn btn-danger"> <a href="{{route('projects.destroy')}}" class="text-decoration-none"><i class="fas fa-trash"></i></a></button> --}}

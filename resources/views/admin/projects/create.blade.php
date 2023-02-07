@@ -73,6 +73,15 @@
                     </div>
                     @enderror
                 </div>
+                
+                {{-- Type name --}}
+                <label class="form-label">Type: </label>
+                <select name="type_id" class="form-select mb-4">
+                    @foreach ($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>
+                    @endforeach
+                </select>
+
 
         {{-- INPUT DESCRIZIONE --}}
                 <div class="col-12">

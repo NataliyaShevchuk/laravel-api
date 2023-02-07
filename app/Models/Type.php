@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['name'];
     // Il nome della funzione dovrebbe essere il nome della tabella a cui 
     // ci colleghiamo, al singolare.
-    public function project()
+    public function types()
     {
-        return $this->belongsTo(Project::class);
-    }
+        return $this->hasMany(Type::class);
+    } 
 }
