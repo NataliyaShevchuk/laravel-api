@@ -9,6 +9,7 @@
             </a>
         </button>
     </div>
+    @dump($project)
     <div class="row mx-5">
                 <div class="col-6 my-3">
                     <div class="card">

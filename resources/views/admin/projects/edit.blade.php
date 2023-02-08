@@ -42,13 +42,14 @@
                 </div>
                 <div class="col-md-6">
                     <label for="" class="form-label">Cover Image</label>
-                    <input type="url"  class="form-control @error('cover_img') is-invalid @elseif(old('cover_img')) is-valid @enderror" name="cover_img" value="{{ $errors->has('cover_img') ? '' : old('cover_img') }}">
+                    <input type="file"  class="form-control @error('cover_img') is-invalid @elseif('cover_img') is-valid @enderror" name="cover_img">
+                    <img class="img-thumbnail" src="">
                     {{-- Messaggio  --}}
                     @error('cover_img')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
-                    @elseif(old('cover_img'))
+                    @elseif('cover_img')
                     <div class="valid-feedback">
                         Nice work dude!
                     </div>

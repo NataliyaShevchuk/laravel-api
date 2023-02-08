@@ -49,37 +49,61 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProjectRequest $request)
+    public function store(StoreProjectRequest $request, Project $project)
     {
 
-        $secureData = $request->validated();
+        // $secureData = $request->validated();
         
-        // $moreData = $request->all();
+        $secureData = $request->all();
+        
 
+
+        // dd($secureData['name']);
+
+
+        // Salviamo il file nello storage e recuperiamo il path
+        $path = Storage::put("projects", $secureData["cover_img"]);
+
+
+        // usiamo il path per salvarlo a db
+        // $project->new_cover_img = $path;
+        // $project->save();
+
+        // dd($path);
 
         // Prende ogni chiave dell'array associativo e ne assegna il valore all'istanza del prodotto
 
         // $project->save();
 
         // carico il file SOLO se ne ricevo uno
-        if (key_exists("cover_img", $secureData)) {
+        // if (key_exists("new_cover_img", $secureData)) {
             // carico il nuovo file
             // salvo in una variabile temporanea il percorso del nuovo file
-            $path = Storage::put("projects", $secureData["cover_img"]);
+            // $path = Storage::disk('public')->put('projects', $secureData['new_cover_img']);
 
 
             // Dopo aver caricato la nuova immagine, PRIMA di aggiornare il db,
             // cancelliamo dallo storage il vecchio file.
             // $post->cover_img // vecchio file
 
-        }
+        // }
 
-        $project = new Project();
-        $project->cover_img = $path;
+
+
+        // $project = new Project();
         $project->fill($secureData);
+        $project->cover_img = $path;
         $project->save();
+        // $project = $project->create([
+        //     "name" => $secureData['name'] ,
+        //     "new_cover_img" => $path ?? ' '
+        // ]);
+        // dd($path);
+        // $project->save();
 
-        return redirect()->route("admin.projects.show", $project->id);
+
+
+        return redirect()->route("admin.projects.show", compact('project'));
     }
 
     /**

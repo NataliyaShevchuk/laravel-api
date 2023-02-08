@@ -11,6 +11,7 @@
     </div>
     <div class="row mx-5">
         @foreach($project as $single_project)
+        @dump($single_project)
                 <div class="col-3 my-3 ">
                     <div class="card">
                         <img src="{{$single_project->cover_img }}" class="card-img-top" alt="...">
