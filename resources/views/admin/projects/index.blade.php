@@ -11,10 +11,9 @@
     </div>
     <div class="row mx-5">
         @foreach($project as $single_project)
-        @dump($single_project)
                 <div class="col-3 my-3 ">
                     <div class="card">
-                        <img src="{{$single_project->cover_img }}" class="card-img-top" alt="...">
+                        <img src="{{ asset('storage/' . $single_project->cover_img) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{$single_project->name}}</h5>
                             <p class="card-text">{{$single_project->description}}</p>

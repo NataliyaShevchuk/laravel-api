@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-12 mt-5 justify-content-center">
-            <form action=" {{route('admin.projects.update') }} " class="row g-3" method="POST">
+            <form action=" {{route('admin.projects.update') }} " class="row g-3" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
