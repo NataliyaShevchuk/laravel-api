@@ -28,7 +28,8 @@ class StoreProjectRequest extends FormRequest
             "name" => "required|min:2|max:255",
             "description" => "required|string",
             "github_link" => "string|url",
-            "cover_img" => "required|file|max:1024"
+            "cover_img" => "required|file|max:1024",
+            "technologies" => "nullable|array|exists:technologies,id"
         ];
     }
 

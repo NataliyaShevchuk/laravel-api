@@ -83,6 +83,21 @@
                 </select>
 
 
+                {{-- Checkboks/buttons d Technologies --}}
+                <div class="form-check form-check-inline">
+                @foreach ($technologies as $technology )
+
+                    {{-- <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">1</label> --}}
+                    <input type="checkbox" class="btn-check" id="btn-check-outlined_{{$loop->index}}" autocomplete="off" value="{{$technology->id}}"  name="technologies[]" 
+                    {{in_array($technology->id, old('technologies', [])) ? 'checked' : ' '}}>
+                    <label class="btn btn-outline-primary" for="btn-check-outlined_{{$loop->index}}">{{$technology->name}}</label>
+                    
+                @endforeach
+                </div>
+
+
+
         {{-- INPUT DESCRIZIONE --}}
                 <div class="col-12">
                     <label for="" class="form-label">Description</label>

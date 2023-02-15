@@ -19,6 +19,9 @@
                             <p class="card-text">{{$project->description}}</p>
                             <p class="card-text">{{ $project->type ? $project->type->name : '' }}</p>
                             <a href="{{$project->github_link}}" class="btn btn-primary">Github Link</a>
+                            <br>
+                            <span class="badge text-bg-primary my-2">{{$project->technologies->implode('name', ' ')}}</span>
+                            <br>
                             <button class="btn btn-info"> <a href="{{route('admin.projects.edit', $project->id)}}" class="text-decoration-none">Modifica</a></button>
                             {{-- <button class="btn btn-danger"> <a href="{{route('projects.destroy')}}" class="text-decoration-none"><i class="fas fa-trash"></i></a></button> --}}
                             <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" id="form-delete">

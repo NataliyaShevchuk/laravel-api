@@ -18,6 +18,9 @@
                             <h5 class="card-title">{{$single_project->name}}</h5>
                             <p class="card-text">{{$single_project->description}}</p>
                             <a href="{{$single_project->github_link}}" class="btn btn-primary">Github Link</a>
+                            <br>
+                            <span class="badge text-bg-primary my-2">{{$single_project->technologies->implode('name', ' ')}}</span>
+                            <br>
                             <button class="btn btn-info"> <a href="{{route('admin.projects.edit', $single_project->id)}}" class="text-decoration-none">Modify</a></button>
 
                             <form action="{{ route('admin.projects.destroy', $single_project->id) }}" method="POST" id="form-delete">

@@ -71,6 +71,22 @@
                     </div>
                     @enderror
                 </div>
+
+                {{-- Checkboks/buttons d Technologies --}}
+                <div class="col-12">
+                    <div class="form-check form-check-inline">
+                    @foreach ($technologies as $technology )
+
+                        {{-- <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                        <label class="form-check-label" for="inlineCheckbox1">1</label> --}}
+                        <input type="checkbox" class="btn-check @error('technologies') is-invalid @enderror" id="btn-check-outlined_{{$loop->index}}" autocomplete="off" value="{{$technology->id}}"  name="technologies[]"
+                        {{$project->technologies->contains('id', $technology->id) ? 'checked' : ' '}}>
+                        <label class="btn btn-outline-primary" for="btn-check-outlined_{{$loop->index}}">{{$technology->name}}</label>
+                        
+                    @endforeach
+                    </div>
+                </div>
+
                 <div class="col-12">
                     <label for="" class="form-label">Description</label>
                     <textarea type="text" cols="30" rows="5" class="form-control  @error('description') is-invalid @enderror" placeholder="Description" name="description">{{ old('description') }}</textarea>

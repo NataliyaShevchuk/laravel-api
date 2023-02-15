@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreProjectRequest;
+use App\Models\Technology;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -23,9 +24,12 @@ class ProjectController extends Controller
 
         $types = Type::all();
 
+        $technologies = Technology::all();
+
         return view('admin.projects.index', [
             'project' => $project,
-            'types' => $types
+            'types' => $types,
+            'technologies' => $technologies
         ]);
     }
 
@@ -36,10 +40,13 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        
         $types = Type::all();
+        $technologies = Technology::all();
 
         return view('admin.projects.create', [
-            'types' => $types
+            'types' => $types,
+            'technologies' => $technologies
         ]);
     }
 
@@ -100,8 +107,9 @@ class ProjectController extends Controller
         // ]);
         // dd($path);
         // $project->save();
-
-
+        if ($request->has('technologies')){
+            $project->technologies()->attach($secureData["technologies"]);
+        }
 
         return redirect()->route("admin.projects.show", compact('project'));
     }
@@ -130,10 +138,12 @@ class ProjectController extends Controller
         $project = Project::find($id);
 
         $types = Type::all();
+        $technologies = Technology::all();
 
         return view('admin.projects.create', [
             'project' => $project,
-            'types' => $types
+            'types' => $types,
+            'technologies' => $technologies
         ]);
     }
 
@@ -147,6 +157,8 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         $project = Project::findOrFail($id);
+
+        $project->technologies()->sync("technologies");
 
         return redirect()->route("admin.projects.show", $project->id);
     }
@@ -164,6 +176,8 @@ class ProjectController extends Controller
         if ($project->cover_img) {
             Storage::delete($project->cover_img);
         }
+
+        $project->technologies()->detach();
 
         $project->delete();
 
