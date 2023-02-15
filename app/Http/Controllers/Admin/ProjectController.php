@@ -21,15 +21,18 @@ class ProjectController extends Controller
     public function index()
     {
         $project = Project::all();
-
+        
         $types = Type::all();
-
+        
         $technologies = Technology::all();
 
+        $projects = Project::paginate();
+        
         return view('admin.projects.index', [
             'project' => $project,
             'types' => $types,
-            'technologies' => $technologies
+            'technologies' => $technologies,
+            'projects' => $projects
         ]);
     }
 
