@@ -56,6 +56,6 @@
                 </div>
         @endforeach
     </div>
-    {{ $projects->links() }}
+    {{-- {{ $projects->links() }} --}}
 </main>
 @endsection
