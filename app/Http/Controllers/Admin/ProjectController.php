@@ -26,13 +26,13 @@ class ProjectController extends Controller
         
         $technologies = Technology::all();
 
-        $projects = Project::paginate();
+        // $projects = Project::paginate();
         
         return view('admin.projects.index', [
             'project' => $project,
             'types' => $types,
             'technologies' => $technologies,
-            'projects' => $projects
+            // 'projects' => $projects
         ]);
     }
 

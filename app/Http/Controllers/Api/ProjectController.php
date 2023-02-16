@@ -16,7 +16,7 @@ class ProjectController extends Controller
     }
 
     public function show(Project $projects){
-        $projects = Project::paginate(3);
+        // $projects = Project::paginate(3);
         $projects->load("type", "technologies");
 
         return response()->json($projects);
