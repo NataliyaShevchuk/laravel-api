@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "acf284243d37211123bc3fc7853b88d5",
+    "content-hash": "d55d2e57e5087eed7a32ef3e8ac9022e",
     "packages": [
         {
             "name": "brick/math",
@@ -6254,6 +6254,75 @@
                 "source": "https://github.com/laravel/sail"
             },
             "time": "2023-01-31T13:37:57+00:00"
+        },
+        {
+            "name": "leicaflorian/pimp_my_crud",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leicaflorian/pimp_my_crud.git",
+                "reference": "db9191b5a88f008576aa007caa3b8a7feac8c842"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leicaflorian/pimp_my_crud/zipball/db9191b5a88f008576aa007caa3b8a7feac8c842",
+                "reference": "db9191b5a88f008576aa007caa3b8a7feac8c842",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^3.6",
+                "guzzlehttp/guzzle": "^7.2",
+                "laravel/framework": "^9.19",
+                "laravel/sanctum": "^3.0",
+                "laravel/tinker": "^2.7",
+                "pacificdev/laravel_9_preset": "^1.0",
+                "php": "^8.0.2"
+            },
+            "require-dev": {
+                "fakerphp/faker": "^1.9.1",
+                "laravel/pint": "^1.0",
+                "laravel/sail": "^1.0.1",
+                "mockery/mockery": "^1.4.4",
+                "nunomaduro/collision": "^6.1",
+                "phpunit/phpunit": "^9.5.10",
+                "spatie/laravel-ignition": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LeicaFlorian\\PimpMyCrud\\PimpMyCrudServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LeicaFlorian\\PimpMyCrud\\": "src/",
+                    "LeicaFlorian\\PimpMyCrud\\Commands\\": "src/Commands"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florian Leica",
+                    "email": "info@leicaflorianrobert.dev",
+                    "homepage": "https://leicaflorianrobert.dev"
+                }
+            ],
+            "description": "Artisan commands for creating CRUD views and controller.",
+            "keywords": [
+                "crud",
+                "laravel",
+                "resource"
+            ],
+            "support": {
+                "issues": "https://github.com/leicaflorian/pimp_my_crud/issues",
+                "source": "https://github.com/leicaflorian/pimp_my_crud/tree/1.0.1"
+            },
+            "time": "2023-02-17T18:39:14+00:00"
         },
         {
             "name": "mockery/mockery",
